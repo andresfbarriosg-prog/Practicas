@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Tienda {
@@ -103,15 +104,42 @@ public class Tienda {
     }
 
     // 1
-    public List<Producto> obtnerCantidadDisponible(){
-        return listaProductos.values().stream().filter(producto-> producto.getCantidadDisponible()>=10).toList();
-    }
-    public List<String> obtenerCodigoYStock(){
-        return listaProductos.values().stream().filter(producto-> producto.getCantidadDisponible()>=10 && producto.getCantidadDisponible()<50)
-                .map(producto->producto.getCodigo()).toList();
+    public List<Producto> obtnerCantidadDisponible() {
+        return listaProductos.values().stream().filter(producto -> producto.getCantidadDisponible() >= 10).toList();
+        //2
     }
 
+    public List<String> obtenerCodigoYStock() {
+        return listaProductos.values().stream().filter(producto -> producto.getCantidadDisponible() >= 10 && producto.getCantidadDisponible() < 50)
+                .map(producto -> producto.getCodigo()).toList();
+    }
+
+    //3
+    public ArrayList<Cliente> obtenerListaClientesPorFecha(LocalDate fechaConsulta) {
+        ArrayList<Cliente>  listaClentes= new ArrayList<>();
+        for(Cliente aux: listaClientes){
+            if(aux.isCompraEnFecha(fechaConsulta)==true){
+                listaClentes.add(aux);
+            }
+        }
+       return listaClentes;
+
+    }
+    //4
+
+    public List<Factura> obtenerFacturasClientesR(){
+        char letraInicial = 'r';
+        List<Factura> listaFacturasResultado = new ArrayList<>();
+        for(Factura facturaAux: listaFacturas){
+            String cliente = String.valueOf((facturaAux.cliente()));
+            if(cliente.charAt(0)==(letraInicial)){
+                listaFacturasResultado.add(facturaAux);
+            }
+        }
+        return listaFacturasResultado;
+    }
 
 
+    //5
 }
 
