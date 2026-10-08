@@ -10,10 +10,10 @@ public class Tienda {
 
     private final ArrayList<Cliente> listaClientes = new ArrayList<>();
     private final List<Factura> listaFacturas = new LinkedList<>();
-    private Map<String,Producto> listaProductos = new HashMap<>();
+    private Map<String, Producto> listaProductos = new HashMap<>();
 
 
-    public Tienda(String nombre, String nit,String telefono){
+    public Tienda(String nombre, String nit, String telefono) {
         this.nombre = nombre;
         this.nit = nit;
         this.telefono = telefono;
@@ -47,12 +47,14 @@ public class Tienda {
         listaClientes.add(cliente);
         return true;
     }
+
     // BUSCAR
     public Optional<Cliente> buscarCliente(String documentoIdentidad) {
         return listaClientes.stream()
                 .filter(aux -> aux.getDocumentoIdentidad().equals(documentoIdentidad))
                 .findFirst(); // Retorna automáticamente un Optional con el producto o vacío
     }
+
     public boolean eliminarCliente(String documentoIdentidad) {
 
         Optional<Cliente> clienteEncontrado = buscarCliente(documentoIdentidad);
@@ -83,6 +85,7 @@ public class Tienda {
     public Optional<Producto> buscarProducto(String codigo) {
         return Optional.ofNullable(listaProductos.get(codigo));
     }
+
     //ACTUALIZAR
     public boolean eliminarProducto(String codigo) {
 
@@ -93,17 +96,22 @@ public class Tienda {
 
         return false;
     }
+
     public boolean crearFactura(Factura factura) {
         listaFacturas.add(factura);
         return true;
     }
 
     // 1
-    public void cantidadDisponible(){
-        for(Producto aux: listaProductos){
-            if(aux)
-        }
+    public List<Producto> obtnerCantidadDisponible(){
+        return listaProductos.values().stream().filter(producto-> producto.getCantidadDisponible()>=10).toList();
+    }
+    public List<String> obtenerCodigoYStock(){
+        return listaProductos.values().stream().filter(producto-> producto.getCantidadDisponible()>=10 && producto.getCantidadDisponible()<50)
+                .map(producto->producto.getCodigo()).toList();
     }
 
-    }
+
+
+}
 
