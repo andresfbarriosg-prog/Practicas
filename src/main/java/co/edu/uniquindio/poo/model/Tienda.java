@@ -149,6 +149,7 @@ public class Tienda {
     // donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
     public List <Factura> obtenerFacturasJuanIphone(){
         return listaFacturas.stream().filter(factura -> factura.cliente().getNombreCompleto().equalsIgnoreCase("Juan")&& factura.listaDetallesFactura().stream().anyMatch(detalleFactura -> detalleFactura.getProducto().getNombre().equals("Iphone 16 pro max"))).toList();
+        // anyMatch() cuando solo necesites una respuesta de SÍ o NO (boolean)
 
     }
 
@@ -157,14 +158,19 @@ public class Tienda {
     //  y retorne todos los productos registrados que pertenezcan a ella.
     public List<Producto> obtenerProductosPorCategoria(Categoria categoriaBuscar){
         return listaProductos.values().stream().filter(producto -> producto.getCategoria().equals(categoriaBuscar)).toList();
+        // RECORDAME en un hash map es diferente,
     }
 
     //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne
     // los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
+    public List <Producto> obtenerProductosRangoPrecio(double precioMinmo, double precioMaximo){
+        return listaProductos.values().stream().filter(producto -> producto.getValor()>=precioMinmo&& producto.getValor()<=precioMaximo).toList();
+
+    }
 
     //punto 9: Implementar un método que retorne todos los productos
     // registrados en la tienda, ordenados de menor a mayor según su precio.
-
+    public
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
     // Si no existen productos registrados, el método debe retornar un Optional vacío.
 
