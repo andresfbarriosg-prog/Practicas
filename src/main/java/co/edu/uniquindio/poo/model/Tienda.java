@@ -170,7 +170,14 @@ public class Tienda {
 
     //punto 9: Implementar un método que retorne todos los productos
     // registrados en la tienda, ordenados de menor a mayor según su precio.
-    public
+    public List <Producto> OrdenarProductos(){
+        return listaProductos.values().stream().sorted(Comparator.comparing(producto -> producto.getValor())).toList();
+
+
+        // Comparator.comparing para ir comprando
+        //.sorted(...) para ordenar
+        //por defecto es menor a mayor, en caso de quererlo ivertirs se usa .reversed(), se pone despues de ibetner el valor en en este caso
+    }
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
     // Si no existen productos registrados, el método debe retornar un Optional vacío.
 
