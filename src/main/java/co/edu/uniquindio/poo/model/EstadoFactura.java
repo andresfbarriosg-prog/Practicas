@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo.model.Enum;
+package co.edu.uniquindio.poo.model;
 
 public enum EstadoFactura {
     GENERADA,
