@@ -147,7 +147,10 @@ public class Tienda {
 
     //punto 6:   Obtener las facturas que tenga un cliente
     // donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
-    public List <Factura>
+    public List <Factura> obtenerFacturasJuanIphone(){
+        return listaFacturas.stream().filter(factura -> factura.cliente().getNombreCompleto().equalsIgnoreCase("Juan")&& factura.listaDetallesFactura().stream().anyMatch(detalleFactura -> detalleFactura.getProducto().getNombre().equals("Iphone 16 pro max"))).toList();
+        
+    }
 
 
     // Punto 7: Implementar un método que reciba una categoría
