@@ -191,5 +191,53 @@ public class Tienda {
     public List <Cliente> obtenerClientesPorCiudad(String ciudadBuscar){
         return listaClientes.stream().filter(cliente -> cliente.getCiudadResidencia().equalsIgnoreCase(ciudadBuscar)).toList();
     }
+    // metodo para devolver Producto mas barato
+    public Optional <Producto> obtenerProductoMenorPrecio(){
+        return listaProductos.values().stream().min(Comparator.comparing(producto -> producto.getValor()));
+
+        //min es para hallar el menor
+
+    }
+    //Crea un método obtenerNombresClientesDeCiudad(String ciudad) que reciba el nombre de una ciudad y retorne una lista de nombres de personas (List<String>) que vivan allí.
+    public List<String> obtenerNobresClientesPorCiudad(String ciudadBuscar){
+        return listaClientes.stream().filter(cliente -> cliente.getCiudadResidencia().equalsIgnoreCase(ciudadBuscar)).map(cliente -> cliente.getNombreCompleto()).toList();
+
+        // .map() se usa para transformar en otro elemento, en este caso entra el objeto cliente y saca el nombre nada mas
+    }
+    // metodo hallar existencias
+    public boolean existeProductoEnCategoria(Categoria categoria, double precioMaximo) {
+        return listaProductos.values().stream()
+                .anyMatch(producto -> producto.getCategoria()==categoria && producto.getValor()<=precioMaximo );
+    }
+    // metodo hallar los 3 productos mas caros
+    public List <Producto> obtener3ProductosMasCaros () {
+        return listaProductos.values().stream().sorted(Comparator.comparing((Producto producto) -> producto.getValor()).reversed()).limit(3).toList();
+
+        //.limit() limita el numero de elentos que se agregan
+                // a veces java se pone como marica y toca hacer esto pa que deje de joder (Producto producto) o esto Producto::getValor
+    }
+      //hallar Porducto mas barato de una categoria
+    public Optional<Producto> obtenerProductoBaratoPorCategoria(Categoria categoriaBusqueda){
+        return listaProductos.values().stream().filter(producto ->producto.getCategoria()==categoriaBusqueda ).min(Comparator.comparing(producto -> producto.getValor()));
+    }
+    // buscar cliente(nombre) por ciudad y deolcer sus nombres en mayuscula
+    public List<String> obetnerNombreClientesPorCiudad(String ciudadBusqueda){
+        return listaClientes.stream().filter(cliente -> cliente.getCiudadResidencia().equalsIgnoreCase(ciudadBusqueda)).map(cliente -> cliente.getNombreCompleto().toUpperCase()).toList();
+
+        // .toUpperCase() para poner todo en mayuscula
+    }
+    // Enunciado: Crea un método llamado todosLosProductosSuperanPrecio(double precioMinimo) que devuelva un boolean. Debe verificar si TODOS los productos de la tienda tienen un valor mayor o igual al precioMinimo.
+    public boolean todosLosProductosSuperanPrecio(double precioMinimo) {
+        return listaProductos.values().stream().allMatch(producto -> producto.getValor()>=precioMinimo);
+        // .allMatch(...): Retorna true si todos cumplen.
+    }
+    //Enunciado: Crea un método llamado obtenerCiudadesUnicas() que devuelva una List<String> con los nombres de todas las ciudades donde residen los clientes, sin repetir ninguna ciudad
+    public List<String> obtenerCiudadesUnicas() {
+        return listaClientes.stream().map(cliente -> cliente.getCiudadResidencia()).distinct().toList();
+
+        // .distinct() se usa para eliminar duplicados
+    }
+
+
 }
 
