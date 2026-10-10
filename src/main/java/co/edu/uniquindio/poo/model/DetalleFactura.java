@@ -1,14 +1,11 @@
 package co.edu.uniquindio.poo.model;
 
-import java.util.ArrayList;
-
 public class DetalleFactura {
 
     private final int cantidadComprada;
     private final double subTotal;
     private final Producto producto;
     private final Factura owndByFactura;
-
 
     public DetalleFactura(int cantidadComprada, double subTotal, Producto producto, Factura owndByFactura) {
         this.cantidadComprada = cantidadComprada;
@@ -33,8 +30,7 @@ public class DetalleFactura {
         return owndByFactura;
     }
 
-    public void calcularSubtotal(){
-        subTotal= cantidadComprada * producto.getValor();
-
+    public float calcularSubTotal(){
+        return (float) (cantidadComprada * getProducto().getValor());
     }
 }

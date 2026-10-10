@@ -65,4 +65,7 @@ public class Cliente {
         }
         return comproFecha;
     }
+    public boolean verificarNombreConR() {
+        return nombreCompleto.startsWith("R");
+}
 }

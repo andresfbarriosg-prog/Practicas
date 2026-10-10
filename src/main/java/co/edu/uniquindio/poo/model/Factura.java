@@ -11,17 +11,12 @@ public record Factura(String codigo, LocalDate fecha, double total,
                       ArrayList<DetalleFactura> listaDetallesFactura, Tienda ownedByTienda) {
 
 
+    public boolean tieneClienteConR() {
 
+        boolean resultado = false;
+        resultado = cliente.verificarNombreConR();
+        return resultado ;
 
-    public double calcularTotal() {
-        double total = 0;
-
-        for (DetalleFactura detalle : listaDetallesFactura) {
-            total += detalle.getSubTotal();
-        }
-
-        return total;
-    }
 
     }
-
+}

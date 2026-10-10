@@ -1,13 +1,11 @@
 package co.edu.uniquindio.poo.model;
 
-import co.edu.uniquindio.poo.model.Enum.Categoria;
-
 public class Producto {
 
     private final String nombre;
     private final String codigo;
     private final String descripcion;
-    private  int cantidadDisponible;
+    private int cantidadDisponible;
     private final double valor;
     private final Categoria categoria;
     private final Tienda ownedByTienda;
@@ -41,10 +39,6 @@ public class Producto {
         return cantidadDisponible;
     }
 
-    public void setCantidadDisponible(int cantidadDisponible) {
-        this.cantidadDisponible = cantidadDisponible;
-    }
-
     public double getValor() {
         return valor;
     }
@@ -56,4 +50,6 @@ public class Producto {
     public Tienda getOwnedByTienda() {
         return ownedByTienda;
     }
+
+
 }
