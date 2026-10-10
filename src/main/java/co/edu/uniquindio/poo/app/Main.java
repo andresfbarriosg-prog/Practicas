@@ -1,9 +1,8 @@
 package co.edu.uniquindio.poo.app;
 
 import co.edu.uniquindio.poo.model.Cliente;
-import co.edu.uniquindio.poo.model.Enum.Categoria;
+import co.edu.uniquindio.poo.model.Categoria;
 import co.edu.uniquindio.poo.model.Producto;
-import co.edu.uniquindio.poo.model.Repositorio;
 import co.edu.uniquindio.poo.model.Tienda;
 
 import javax.swing.*;

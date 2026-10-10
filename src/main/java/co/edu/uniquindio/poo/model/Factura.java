@@ -1,8 +1,5 @@
 package co.edu.uniquindio.poo.model;
 
-import co.edu.uniquindio.poo.model.Enum.EstadoFactura;
-import co.edu.uniquindio.poo.model.Enum.MetodoPago;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 

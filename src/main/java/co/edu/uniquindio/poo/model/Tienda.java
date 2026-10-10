@@ -149,12 +149,15 @@ public class Tienda {
     // donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
     public List <Factura> obtenerFacturasJuanIphone(){
         return listaFacturas.stream().filter(factura -> factura.cliente().getNombreCompleto().equalsIgnoreCase("Juan")&& factura.listaDetallesFactura().stream().anyMatch(detalleFactura -> detalleFactura.getProducto().getNombre().equals("Iphone 16 pro max"))).toList();
-        
+
     }
 
 
     // Punto 7: Implementar un método que reciba una categoría
     //  y retorne todos los productos registrados que pertenezcan a ella.
+    public List<Producto> obtenerProductosPorCategoria(Categoria categoriaBuscar){
+        return listaProductos.values().stream().filter(producto -> producto.getCategoria().equals(categoriaBuscar)).toList();
+    }
 
     //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne
     // los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
